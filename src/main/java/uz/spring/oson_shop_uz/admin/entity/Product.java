@@ -1,5 +1,6 @@
 package uz.spring.oson_shop_uz.admin.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -21,6 +22,7 @@ public class Product extends AbsEntity {
 
     private double price;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private SubCategory subCategory;
 

@@ -11,7 +11,6 @@ import java.util.UUID;
 @Configuration
 @EnableJpaAuditing
 public class EntityListenerConfig {
-
     @Bean
     AuditorAware<String> auditorAware() {
         return new EntityListener();

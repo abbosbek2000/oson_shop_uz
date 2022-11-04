@@ -5,6 +5,6 @@ import javax.validation.constraints.NotNull;
 
 @Data
 public class CategoryDTO {
-    @NotNull(message = "bosh bo'lamsligi kerak")
+    @NotNull(message = "This is not empty")
     private String categoryName;
 }

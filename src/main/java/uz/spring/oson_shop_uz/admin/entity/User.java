@@ -18,6 +18,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Table(name = "users")
+
 public class User extends AbsEntity implements UserDetails {
     @Column(nullable = false)
     private String firstName;

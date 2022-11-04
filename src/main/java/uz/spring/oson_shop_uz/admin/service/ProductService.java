@@ -1,11 +1,14 @@
 package uz.spring.oson_shop_uz.admin.service;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import uz.spring.oson_shop_uz.admin.entity.Attachment;
+import uz.spring.oson_shop_uz.admin.entity.Category;
 import uz.spring.oson_shop_uz.admin.entity.Product;
 import uz.spring.oson_shop_uz.admin.entity.SubCategory;
+import uz.spring.oson_shop_uz.admin.exception.CustomException;
 import uz.spring.oson_shop_uz.admin.receive.ProductDTO;
 import uz.spring.oson_shop_uz.admin.repository.AttachmentRepository;
 import uz.spring.oson_shop_uz.admin.repository.ProductRepository;
@@ -21,19 +24,13 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 @Service
-public class ProductService implements BaseService<ProductDTO, ApiResponse, Long> {
+@RequiredArgsConstructor
+public class ProductService implements BaseService<ProductDTO, ApiResponse, Product> {
     private static final String uploadDirectory = "yuklanganlar";
     private final ProductRepository productRepository;
     private final SubCategoryRepository subCategoryRepository;
     private final AttachmentRepository attachmentRepository;
     private final AttachmentService attachmentService;
-    @Autowired
-    public ProductService(ProductRepository productRepository, SubCategoryRepository subCategoryRepository, AttachmentRepository attachmentRepository, AttachmentService attachmentService) {
-        this.productRepository = productRepository;
-        this.subCategoryRepository = subCategoryRepository;
-        this.attachmentRepository = attachmentRepository;
-        this.attachmentService = attachmentService;
-    }
 
     public ApiResponse add(ProductDTO productDTO,MultipartFile file) throws IOException {
         Optional<SubCategory> optionalSubCategory = subCategoryRepository.findById(productDTO.getSubCategoryId());
@@ -63,19 +60,34 @@ public class ProductService implements BaseService<ProductDTO, ApiResponse, Long
     }
 
     @Override
-    public List<Long> get() {
-        return null;
+    public List<Product> get() {
+        return productRepository.findAll();
     }
 
     @Override
-
-    public ApiResponse edit(ProductDTO product, Long id) {
-        return null;
+    public ApiResponse edit(ProductDTO newProduct, Long id) {
+        Optional<SubCategory> optionalSubCategory = subCategoryRepository.findById(newProduct.getSubCategoryId());
+        if (optionalSubCategory.isPresent()) {
+            SubCategory subCategory = optionalSubCategory.get();
+            Optional<Product> optionalProduct = productRepository.findById(id);
+            if (optionalProduct.isPresent()) {
+                Product product = optionalProduct.get();
+                product.setName(newProduct.getProductName());
+                product.setPrice(newProduct.getPrice());
+                product.setSubCategory(subCategory);
+                return new ApiResponse("SUCCESSFULLY EDITED PRODUCT", true);
+            }
+            return new ApiResponse("this can not find product ", false);
+        }
+        return new ApiResponse("this can not find sub category ", false);
     }
 
     @Override
     public ApiResponse delete(Long id) {
-        return null;
+        Product category = productRepository.findById(id)
+                .orElseThrow(() -> new CustomException("this id category not found " + id));
+        productRepository.delete(category);
+        return new ApiResponse("successfully deleted", true);
     }
 
     public ApiResponse addProduct(ProductDTO productDTO, MultipartHttpServletRequest request) throws IOException {

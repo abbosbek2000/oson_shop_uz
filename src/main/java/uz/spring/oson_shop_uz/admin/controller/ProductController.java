@@ -3,17 +3,19 @@ package uz.spring.oson_shop_uz.admin.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import uz.spring.oson_shop_uz.admin.entity.Product;
 import uz.spring.oson_shop_uz.admin.receive.ProductDTO;
 import uz.spring.oson_shop_uz.admin.response.ApiResponse;
 import uz.spring.oson_shop_uz.admin.service.AttachmentService;
 import uz.spring.oson_shop_uz.admin.service.ProductService;
 
 import java.io.IOException;
-import java.util.function.Predicate;
+import java.util.List;
 
 @CrossOrigin(value = "http://localhost:3000")
 @RestController
@@ -42,5 +44,27 @@ public class ProductController {
         productDTO.setSubCategoryId(Long.parseLong(subCategoryId));
         ApiResponse apiResponse = productService.add(productDTO, file);
         return ResponseEntity.status(apiResponse.isSuccess() ? 201 : 409).body(apiResponse);
+    }
+
+    @GetMapping
+    public List<Product> getListProduct() {
+        return productService.get();
+    }
+
+    @PutMapping("/edit/{id}")
+    public HttpEntity<?> ediProduct(@RequestBody ProductDTO productDTO,
+                                    @PathVariable(value = "id") Long id) {
+        ApiResponse apiResponse = productService.edit(productDTO, id);
+        return ResponseEntity.status(apiResponse.isSuccess() ?
+                        HttpStatus.OK : HttpStatus.CONFLICT).body(apiResponse);
+
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public HttpEntity<?> ediProduct(@PathVariable(value = "id") Long id) {
+        ApiResponse apiResponse = productService.delete(id);
+        return ResponseEntity.status(apiResponse.isSuccess() ?
+                HttpStatus.OK : HttpStatus.CONFLICT).body(apiResponse);
+
     }
 }

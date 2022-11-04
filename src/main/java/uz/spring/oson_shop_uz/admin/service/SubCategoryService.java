@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uz.spring.oson_shop_uz.admin.entity.Category;
 import uz.spring.oson_shop_uz.admin.entity.SubCategory;
+import uz.spring.oson_shop_uz.admin.exception.CustomException;
 import uz.spring.oson_shop_uz.admin.receive.SubCategoryDTO;
 import uz.spring.oson_shop_uz.admin.repository.CategoryRepository;
 import uz.spring.oson_shop_uz.admin.repository.SubCategoryRepository;
@@ -46,14 +47,34 @@ public class SubCategoryService implements BaseService<SubCategoryDTO, ApiRespon
 
 
     @Override
-    public ApiResponse edit(SubCategoryDTO subCategoryDTO, Long aLong) {
-        return null;
+    public ApiResponse edit(SubCategoryDTO subCategoryDTO, Long id) {
+        Optional<Category> optionalCategory = categoryRepository.findById(subCategoryDTO.getCategoryId());
+        if (optionalCategory.isPresent()) {
+            Category category = optionalCategory.get();
+            Optional<SubCategory> optionalSubCategory = subCategoryRepository.findById(id);
+            if (optionalSubCategory.isPresent()) {
+                SubCategory subCategory = optionalSubCategory.get();
+                subCategory.setCategory(category);
+                subCategory.setName(subCategoryDTO.getSubCategoryName());
+                subCategoryRepository.save(subCategory);
+                return new ApiResponse("SUCCESSFULLY EDITED SUBCATEGORY", true);
+            }
+            return new ApiResponse("THIS CAN NOT FIND SUB CATEGORY", false);
+        }
+
+        return new ApiResponse("THIS CAN NOT FIND CATEGORY", false);
     }
 
     @Override
     public ApiResponse delete(Long id) {
-        return null;
+        try {
+            Optional<SubCategory> optionalSubCategory = subCategoryRepository.findById(id);
+            subCategoryRepository.delete(optionalSubCategory.get());
+            return new ApiResponse("successfully deleted", true);
+        } catch (CustomException e) {
+            throw new CustomException("this id category not found " + id);
+        }
+
+
     }
-
-
 }
