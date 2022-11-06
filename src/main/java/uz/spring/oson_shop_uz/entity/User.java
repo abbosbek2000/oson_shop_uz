@@ -1,4 +1,4 @@
-package uz.spring.oson_shop_uz.admin.entity;
+package uz.spring.oson_shop_uz.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import uz.spring.oson_shop_uz.admin.entity.base.AbsEntity;
+import uz.spring.oson_shop_uz.entity.base.AbsEntity;
 
 import javax.persistence.*;
 import java.util.Collection;

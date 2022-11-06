@@ -1,7 +1,6 @@
-package uz.spring.oson_shop_uz.admin.security.base;
+package uz.spring.oson_shop_uz.security.base;
 
 
-import uz.spring.oson_shop_uz.admin.entity.Category;
 import uz.spring.oson_shop_uz.admin.response.ApiResponse;
 
 import java.util.List;

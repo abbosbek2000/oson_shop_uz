@@ -1,6 +1,5 @@
 package uz.spring.oson_shop_uz.admin.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
@@ -8,7 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import uz.spring.oson_shop_uz.admin.entity.Product;
+import uz.spring.oson_shop_uz.entity.Product;
 import uz.spring.oson_shop_uz.admin.receive.ProductDTO;
 import uz.spring.oson_shop_uz.admin.response.ApiResponse;
 import uz.spring.oson_shop_uz.admin.service.AttachmentService;

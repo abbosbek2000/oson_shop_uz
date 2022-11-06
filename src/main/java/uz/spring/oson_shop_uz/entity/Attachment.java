@@ -1,4 +1,4 @@
-package uz.spring.oson_shop_uz.admin.entity;
+package uz.spring.oson_shop_uz.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package uz.spring.oson_shop_uz.admin.entity;
+package uz.spring.oson_shop_uz.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import uz.spring.oson_shop_uz.admin.entity.base.AbsEntity;
+import uz.spring.oson_shop_uz.entity.base.AbsEntity;
 
 import javax.persistence.*;
 import java.util.List;

@@ -1,4 +1,4 @@
-package uz.spring.oson_shop_uz.admin.security;
+package uz.spring.oson_shop_uz.security;
 import io.jsonwebtoken.*;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Component;

@@ -3,17 +3,14 @@ package uz.spring.oson_shop_uz.admin.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import uz.spring.oson_shop_uz.admin.entity.Attachment;
+import uz.spring.oson_shop_uz.entity.Attachment;
 import uz.spring.oson_shop_uz.admin.repository.AttachmentContentRepository;
 import uz.spring.oson_shop_uz.admin.repository.AttachmentRepository;
-import uz.spring.oson_shop_uz.admin.response.ApiResponse;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Iterator;
 import java.util.UUID;
 
 @Service

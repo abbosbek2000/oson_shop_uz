@@ -10,14 +10,14 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import uz.spring.oson_shop_uz.admin.entity.Role;
-import uz.spring.oson_shop_uz.admin.entity.User;
-import uz.spring.oson_shop_uz.admin.entity.enums.RoleName;
+import uz.spring.oson_shop_uz.entity.Role;
+import uz.spring.oson_shop_uz.entity.User;
+import uz.spring.oson_shop_uz.entity.enums.RoleName;
 import uz.spring.oson_shop_uz.admin.receive.LoginDTO;
 import uz.spring.oson_shop_uz.admin.receive.RegisterDTO;
 import uz.spring.oson_shop_uz.admin.repository.UserRepository;
 import uz.spring.oson_shop_uz.admin.response.ApiResponse;
-import uz.spring.oson_shop_uz.admin.security.JwtProvider;
+import uz.spring.oson_shop_uz.security.JwtProvider;
 
 import java.util.Collections;
 

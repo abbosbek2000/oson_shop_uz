@@ -5,7 +5,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import uz.spring.oson_shop_uz.admin.entity.SubCategory;
+import uz.spring.oson_shop_uz.entity.SubCategory;
 import uz.spring.oson_shop_uz.admin.receive.SubCategoryDTO;
 import uz.spring.oson_shop_uz.admin.response.ApiResponse;
 import uz.spring.oson_shop_uz.admin.service.SubCategoryService;

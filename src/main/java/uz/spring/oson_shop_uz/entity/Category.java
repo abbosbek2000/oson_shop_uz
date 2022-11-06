@@ -1,19 +1,16 @@
-package uz.spring.oson_shop_uz.admin.entity;
+package uz.spring.oson_shop_uz.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import uz.spring.oson_shop_uz.admin.entity.base.AbsEntity;
+import uz.spring.oson_shop_uz.entity.base.AbsEntity;
 
 import javax.persistence.*;
 import java.util.List;
 
-@EqualsAndHashCode(callSuper = true)
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
@@ -26,4 +23,5 @@ public class Category extends AbsEntity {
     @JsonIgnore
     @OneToMany(mappedBy = "category",cascade = CascadeType.ALL)
     private List<SubCategory> subCategories;
+
 }

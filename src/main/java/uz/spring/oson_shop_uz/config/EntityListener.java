@@ -1,9 +1,9 @@
-package uz.spring.oson_shop_uz.admin.config;
+package uz.spring.oson_shop_uz.config;
 
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import uz.spring.oson_shop_uz.admin.entity.User;
+import uz.spring.oson_shop_uz.entity.User;
 
 import java.util.Optional;
 

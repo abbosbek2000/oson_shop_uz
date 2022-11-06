@@ -1,4 +1,4 @@
-package uz.spring.oson_shop_uz.admin.entity.base;
+package uz.spring.oson_shop_uz.entity.base;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.LastModifiedBy;
-import uz.spring.oson_shop_uz.admin.entity.User;
 
 import javax.persistence.*;
 import java.sql.Timestamp;

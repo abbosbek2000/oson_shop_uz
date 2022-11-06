@@ -1,11 +1,11 @@
-package uz.spring.oson_shop_uz.admin.entity;
+package uz.spring.oson_shop_uz.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
-import uz.spring.oson_shop_uz.admin.entity.base.AbsEntity;
-import uz.spring.oson_shop_uz.admin.entity.enums.RoleName;
+import uz.spring.oson_shop_uz.entity.base.AbsEntity;
+import uz.spring.oson_shop_uz.entity.enums.RoleName;
 
 import javax.persistence.*;
 @EqualsAndHashCode(callSuper = true)

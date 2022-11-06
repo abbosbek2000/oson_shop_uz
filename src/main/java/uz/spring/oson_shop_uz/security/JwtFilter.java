@@ -1,7 +1,6 @@
-package uz.spring.oson_shop_uz.admin.security;
+package uz.spring.oson_shop_uz.security;
 
 import lombok.NonNull;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

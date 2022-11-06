@@ -1,4 +1,4 @@
-package uz.spring.oson_shop_uz.admin.security.base;
+package uz.spring.oson_shop_uz.security.base;
 
 import org.springframework.web.multipart.MultipartFile;
 

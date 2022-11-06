@@ -1,13 +1,12 @@
 package uz.spring.oson_shop_uz.admin.service;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import uz.spring.oson_shop_uz.admin.entity.Category;
+import uz.spring.oson_shop_uz.entity.Category;
 import uz.spring.oson_shop_uz.admin.exception.CustomException;
 import uz.spring.oson_shop_uz.admin.receive.CategoryDTO;
 import uz.spring.oson_shop_uz.admin.repository.CategoryRepository;
 import uz.spring.oson_shop_uz.admin.response.ApiResponse;
-import uz.spring.oson_shop_uz.admin.security.base.BaseService;
+import uz.spring.oson_shop_uz.security.base.BaseService;
 import java.util.List;
 import java.util.Optional;
 
