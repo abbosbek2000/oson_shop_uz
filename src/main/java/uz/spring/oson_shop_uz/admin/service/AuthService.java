@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import uz.spring.oson_shop_uz.entity.Role;
-import uz.spring.oson_shop_uz.entity.User;
+import uz.spring.oson_shop_uz.entity.Person;
 import uz.spring.oson_shop_uz.entity.enums.RoleName;
 import uz.spring.oson_shop_uz.admin.receive.LoginDTO;
 import uz.spring.oson_shop_uz.admin.receive.RegisterDTO;
@@ -47,7 +47,7 @@ public class AuthService implements UserDetailsService {
             Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                     loginDto.getUsername(), loginDto.getPassword()
             ));
-            User user = (User) authenticate.getPrincipal();
+            Person user = (Person) authenticate.getPrincipal();
             String token = jwtProvider.generateToken(user.getUsername());
                 return new ApiResponse(token, true);
         } catch (BadCredentialsException e) {
@@ -59,7 +59,7 @@ public class AuthService implements UserDetailsService {
         boolean existsByUsername = userRepository.existsByUsername(registerDto.getUsername());
         if (existsByUsername)
             return new ApiResponse("bunday username ", false);
-        User user = new User(
+        Person user = new Person(
                 registerDto.getFirstName(),
                 registerDto.getLastName(),
                 registerDto.getUsername(),

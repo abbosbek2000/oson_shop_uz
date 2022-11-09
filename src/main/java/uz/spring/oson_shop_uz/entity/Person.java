@@ -10,6 +10,7 @@ import uz.spring.oson_shop_uz.entity.base.AbsEntity;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 @EqualsAndHashCode(callSuper = true)
@@ -17,9 +18,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "users")
-
-public class User extends AbsEntity implements UserDetails {
+public class Person extends AbsEntity implements UserDetails {
     @Column(nullable = false)
     private String firstName;
 
@@ -35,6 +34,9 @@ public class User extends AbsEntity implements UserDetails {
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Set<Role> roles;
 
+    @OneToMany(mappedBy = "person")
+    private List<Payment> payments;
+
     private boolean enabled; // User on or off
 
     private boolean accountNonExpired = true;
@@ -43,7 +45,7 @@ public class User extends AbsEntity implements UserDetails {
 
     private boolean credentialsNonExpired = true;
 
-    public User(String firstName, String lastName, String username, String password, Set<Role> roles, boolean enabled) {
+    public Person(String firstName, String lastName, String username, String password, Set<Role> roles, boolean enabled) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;

@@ -3,7 +3,7 @@ package uz.spring.oson_shop_uz.config;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import uz.spring.oson_shop_uz.entity.User;
+import uz.spring.oson_shop_uz.entity.Person;
 
 import java.util.Optional;
 
@@ -14,7 +14,7 @@ public class EntityListener implements AuditorAware<String> {
         if (authentication != null
                 && authentication.isAuthenticated()
                 && !authentication.getPrincipal().equals("anonymousUser")) {
-            User user = (User) authentication.getPrincipal();
+            Person user = (Person) authentication.getPrincipal();
             return Optional.of(user.getFirstName());
         }
 

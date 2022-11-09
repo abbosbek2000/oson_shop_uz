@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import uz.spring.oson_shop_uz.entity.base.AbsEntity;
-
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -15,15 +14,11 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-public class Shopping extends AbsEntity {
-    private Integer count;
+@Entity(name = "orders")
+public class Order extends AbsEntity {
+    private int count;
 
-    private String checkId;
-
-    private boolean status;
-
-    private Long productId;
+    private double amount;
 
     @OneToMany
     private List<Product> products;
