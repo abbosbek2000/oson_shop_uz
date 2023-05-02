@@ -40,6 +40,7 @@ public class PDFGeneratorService {
                 Font fontParagraph = FontFactory.getFont(FontFactory.HELVETICA);
                 fontParagraph.setSize(12);
 
+
                 for (Payment payment : paymentService.list()) {
                     Long productId = payment.getProductId();
                     Optional<Product> optionalProduct = productRepository.findById(productId);
@@ -47,6 +48,7 @@ public class PDFGeneratorService {
                         Product product = optionalProduct.get();
                         Paragraph paragraph2 = new Paragraph("product name " + product.getName(), fontParagraph);
                         paragraph2.setAlignment(Paragraph.ALIGN_CENTER);
+
 
                         Paragraph paragraph3 = new Paragraph("product check id " + payment.getCheckId(), fontParagraph);
                         paragraph3.setAlignment(Paragraph.ALIGN_CENTER);
